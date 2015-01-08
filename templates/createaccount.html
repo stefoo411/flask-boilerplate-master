@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+      function newUser() {
+           if (db.getUser('username': username) !== false) {
+                 db.insert('username': username, 'password': password);
+           }
+      }
+</script>
+<body>
+      <h1 align = "center"> Create Account </h1>
+      <form align = "center">
+ 
+           Username: <input type="text" name="username">
+           <br><br>
+           Password: <input type="text" name="password">
+           <br><br>
+           <button submit = "newUser()">Submit</button>
+      </form>
+</body>
+</html>

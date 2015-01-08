@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}GET Request{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+	//String firstname = document.getElementById("firstname").value;
+	//String lastname = document.getElementById("lastname").value;
+</script>
+
+<body>
+
+<form action="welcome.php" method="post">
+First name:<br>
+<input type="text" name="firstname" #id = "firstname"#>
+<br>
+Last name:<br>
+<input type="text" name="lastname" /*id="lastname"*/>
+<input type="submit">
+//users.insert({'username': firstname,'lastname': lastname})
+
+</form>
+
+
+<p>Note that the form itself is not visible.</p>
+
+<p>Also note that the default width of a text field is 20 characters.</p>
+
+</body>
+</html>
+
+{% endblock %}
