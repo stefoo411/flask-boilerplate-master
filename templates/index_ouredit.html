@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+	String firstname = document.getElementById("firstname").value;
+	String lastname = document.getElementById("lastname").value;
+
+<body>
+
+<form>
+First name:<br>
+firstname = <input type="text" name="firstname" id = "firstname">
+<br>
+Last name:<br>
+<input type="text" name="lastname" id="lastname">
+
+users.insert({'username': firstname,'lastname': lastname})
+
+</form>
+
+
+<p>Note that the form itself is not visible.</p>
+
+<p>Also note that the default width of a text field is 20 characters.</p>
+
+</body>
+</html>
+
+{% endblock %}
