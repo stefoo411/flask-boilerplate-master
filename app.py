@@ -21,6 +21,10 @@ def create():
 	users = db.users
 	return render_template('createaccount.html', users=users)
 
+@app.route('/surveystats')
+def surveystats():
+	return render_template('surveystats.html')
+
 @app.route('/change')
 def chance():
 	return redirect('/')
@@ -41,7 +45,7 @@ def login():
 def newaccount():
 	if request.method == 'POST':
 		user_name = request.form.get('username')
-		if not (user_name):
+		if user_name is None:
 				return render_template('createaccount.html', error="Cannot leave username blank")
 
 		users.insert({'name':user_name.strip()})
