@@ -16,22 +16,22 @@ def hello():
 	return render_template('home.html')
 
 @app.route('/search')
-def create():
+def search():
 	users = db.users
 	return render_template('search.html', users=users)
 
 @app.route('/newsurveys')
-def create():
+def newsurveys():
 	users = db.users
 	return render_template('newsurveys.html', users=users)
 
 @app.route('/endingsurveys')
-def create():
+def endingsurveys():
 	users = db.users
 	return render_template('endingsurveys.html', users=users)
 
 @app.route('/monthlylottery')
-def create():
+def monthlylottery():
 	users = db.users
 	return render_template('monthlylottery.html', users=users)
 
@@ -41,12 +41,12 @@ def create():
 	return render_template('createaccount.html', users=users)
 
 @app.route('/edit')
-def create():
+def edit():
 	users = db.users
 	return render_template('edit.html', users=users)
 
 @app.route('/history')
-def create():
+def history():
 	users = db.users
 	return render_template('history.html', users=users)
 
@@ -55,12 +55,12 @@ def surveystats():
 	return render_template('surveystats.html')
 
 @app.route('/accountsettings')
-def create():
+def accountsettings():
 	users = db.users
 	return render_template('accountsettings.html', users=users)
 
 @app.route('/change')
-def chance():
+def change():
 	return redirect('/')
 
 @app.route('/post', methods=['GET','POST'])
