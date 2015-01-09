@@ -12,18 +12,52 @@ users = db.users
 
 @app.route('/')
 def hello():
-	print " hello "
 	users.insert({'username':'paras2','password':'sucks'})
 	return render_template('home.html')
+
+@app.route('/search')
+def create():
+	users = db.users
+	return render_template('search.html', users=users)
+
+@app.route('/newsurveys')
+def create():
+	users = db.users
+	return render_template('newsurveys.html', users=users)
+
+@app.route('/endingsurveys')
+def create():
+	users = db.users
+	return render_template('endingsurveys.html', users=users)
+
+@app.route('/monthlylottery')
+def create():
+	users = db.users
+	return render_template('monthlylottery.html', users=users)
 
 @app.route('/create')
 def create():
 	users = db.users
 	return render_template('createaccount.html', users=users)
 
+@app.route('/edit')
+def create():
+	users = db.users
+	return render_template('edit.html', users=users)
+
+@app.route('/history')
+def create():
+	users = db.users
+	return render_template('history.html', users=users)
+
 @app.route('/surveystats')
 def surveystats():
 	return render_template('surveystats.html')
+
+@app.route('/accountsettings')
+def create():
+	users = db.users
+	return render_template('accountsettings.html', users=users)
 
 @app.route('/change')
 def chance():
