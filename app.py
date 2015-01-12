@@ -70,20 +70,20 @@ def login():
 	users = users.find({})
 	return render_template('get.html',users=users)
 
-@app.route('/createaccount', methods=['GET', 'POST'])
-def createaccount():
+@app.route('/newaccount', methods=['GET', 'POST'])
+def newaccount():
 	if request.method == 'POST':
-		user_name = request.form('username')
-		password = request.form('password')
+		user_name = request.form.getlist('username[]')
+		password = request.form.getlist('password[]')
 		if not username:
 			return render_template('createaccount.html', error="Cannot leave username blank")
 		if not password:
-			return render_template('createaccount.html', error="Please enter a password");
+			return render_template('createaccount.html', error="Please enter a password")
 		users = db.users
 		user_exists = users.find({'username': user_name})
 		if not user_exists:
 			users.insert({'username': user_name, 'password': password})
-		return redirect('/methodname')
+		return redirect('/')
 	return render_template("createaccount.html")
 
 if __name__ == '__main__': #main method
