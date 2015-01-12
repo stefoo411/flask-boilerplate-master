@@ -73,8 +73,8 @@ def login():
 @app.route('/newaccount', methods=['GET', 'POST'])
 def newaccount():
 	if request.method == 'POST':
-		user_name = request.form('username')
-		password = request.form('password')
+		user_name = request.form.getlist('username[]')
+		password = request.form.getlist('password[]')
 		if not username:
 			return render_template('createaccount.html', error="Cannot leave username blank")
 		if not password:
