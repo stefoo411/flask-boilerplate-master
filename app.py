@@ -73,11 +73,16 @@ def login():
 @app.route('/newaccount', methods=['GET', 'POST'])
 def newaccount():
 	if request.method == 'POST':
-		user_name = request.form.get('username')
-		if user_name is None:
-				return render_template('createaccount.html', error="Cannot leave username blank")
-
-		users.insert({'name':user_name.strip()})
+		user_name = request.form('username')
+		if not username:
+			return render_template('createaccount.html', error="Cannot leave username blank")
+		pass = request.form('password');
+		if not pass:
+			return render_template('createaccount.html', error="Please enter a password");
+		users = db.users
+		user_exists = users.find({'username': user_name)
+		if not user_exists:
+			users.insert({'username': user_name, 'password': pass)
 		return redirect('/methodname')
 	return render_template("createaccount.html")
 
