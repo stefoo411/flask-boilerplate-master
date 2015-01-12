@@ -76,7 +76,7 @@ def newaccount():
 		user_name = request.form('username')
 		if not username:
 			return render_template('createaccount.html', error="Cannot leave username blank")
-		pass = request.form('password');
+		pass = request.form('password')
 		if not pass:
 			return render_template('createaccount.html', error="Please enter a password");
 		users = db.users
