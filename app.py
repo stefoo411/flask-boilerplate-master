@@ -35,11 +35,6 @@ def monthlylottery():
 	users = db.users
 	return render_template('monthlylottery.html', users=users)
 
-@app.route('/create')
-def create():
-	users = db.users
-	return render_template('createaccount.html', users=users)
-
 @app.route('/edit')
 def edit():
 	users = db.users
