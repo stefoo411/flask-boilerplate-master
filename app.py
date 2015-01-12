@@ -74,15 +74,15 @@ def login():
 def newaccount():
 	if request.method == 'POST':
 		user_name = request.form('username')
+		password = request.form('password')
 		if not username:
 			return render_template('createaccount.html', error="Cannot leave username blank")
-		pass = request.form('password')
-		if not pass:
+		if not password:
 			return render_template('createaccount.html', error="Please enter a password");
 		users = db.users
-		user_exists = users.find({'username': user_name)
+		user_exists = users.find({'username': user_name})
 		if not user_exists:
-			users.insert({'username': user_name, 'password': pass)
+			users.insert({'username': user_name, 'password': password})
 		return redirect('/methodname')
 	return render_template("createaccount.html")
 
