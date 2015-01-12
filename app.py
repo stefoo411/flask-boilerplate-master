@@ -70,8 +70,8 @@ def login():
 	users = users.find({})
 	return render_template('get.html',users=users)
 
-@app.route('/newaccount', methods=['GET', 'POST'])
-def newaccount():
+@app.route('/createaccount', methods=['GET', 'POST'])
+def createaccount():
 	if request.method == 'POST':
 		user_name = request.form('username')
 		password = request.form('password')
