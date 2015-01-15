@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 {% block title %}GET Request{% endblock %}
-{% block content %}
+<!--{% block content %}
 	{% for data in users %}
-		<h1>{{data['username']}}</h1>
+		<h1>{data['username']}</h1>
 	{% endfor %}
 {% endblock %}
+-->
+<form name ="login" id = "log" method ="post" action ="">
+    Username: <INPUT TYPE = "TEXT"; Name ="username"><br><br>
+    Password: <INPUT TYPE = "TEXT"; Name = "password"><br><br>
+    <INPUT TYPE = "submit"; Name = "Submit1" VALUE = "Submit">
+</form>
+
+{% for data in users %}
+	if username == {data['username']}
+		if password == {data['password']}
+			<p>You have logged in!</p>
+{% endfor %}
