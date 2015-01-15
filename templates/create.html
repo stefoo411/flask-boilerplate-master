@@ -3,23 +3,29 @@
 <head> Survi - Create </head>
 <body>
       <h1 align = "center"> Create </h1>
-      <form align = "left">
- 
-           Title: <input type="text" name="survey name">
+      <form name ="form1" id = "1" method ="post" action ="">
+           Title: <input type="text" name="surveyname">
            <br>
            <br>
-           Description: <input type="text" description="survey description">
+           Description: <input type="text" description="surveydescription">
            <br>
            <br>
-           Number of Participants Desired: <input type="text" limit="limit number">
+           Number of Participants Desired: <input type="text" limit="limitnumber">
            <br>
            (You would need to pay: "limit number")
            Question
- 
-          
- 
+           <INPUT TYPE = "submit" Name = "Submit1" VALUE = "Submit">        
       </form>
  
 </body>
  
 </html>
+
+<?PHP 
+  if (isset($_POST['Submit1'])) {
+    $username = $_POST['surveyname']
+    $password = $_POST['surveydescription']
+    print ($username);
+    print ($password);
+  }
+?>
