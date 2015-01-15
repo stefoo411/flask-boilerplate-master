@@ -72,7 +72,7 @@ def login():
 
 @app.route('/newaccount')
 def newaccount():
-	return render_template('createaccount.html)
+	return render_template('createaccount.html')
 
 @app.route('/newaccount', methods=['POST'])
 def newaccount_post():
