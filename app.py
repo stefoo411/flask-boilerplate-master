@@ -66,23 +66,25 @@ def login():
 	users = users.find({})
 	return render_template('get.html',users=users)
 
-@app.route('/newaccount')
-def newaccount():
-	return render_template('createaccount.html')
+#@app.route('/newaccount')
+#def newaccount():
+#	return render_template('createaccount.html')
 
 @app.route('/newaccount', methods=['POST'])
 def newaccount_post():
-	user_name = request.form('username')
-	password = request.form('password')
-	if not user_name:
-		return render_template('createaccount.html', error="Cannot leave username blank")
-	if not password:
-		return render_template('createaccount.html', error="Please enter a password")
-	users = db.users
-	user_exists = users.find({'username': user_name})
-	if not user_exists:
-		users.insert({'username': user_name, 'password': password})
-	return redirect('/')
+	if request.method == 'POST':
+		user_name = request.form.getlist('username[]')
+		password = request.form.getlist('password[]')
+		if not user_name:
+			return render_template('createaccount.html', error="Cannot leave username blank")
+		if not password:
+			return render_template('createaccount.html', error="Please enter a password")
+		users = db.users
+		user_exists = users.find({'username': user_name})
+		if not user_exists:
+			users.insert({'username': user_name, 'password': password})
+		return redirect('/')
+	return render_template('createaccount.html')
 
 if __name__ == '__main__': #main method
 	port = int(os.environ.get('PORT', 8000)) #connects to local host, which is where we're currently running the website locally.
