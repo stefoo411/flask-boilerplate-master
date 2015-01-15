@@ -66,9 +66,9 @@ def login():
 	users = users.find({})
 	return render_template('get.html',users=users)
 
-#@app.route('/newaccount')
-#def newaccount():
-#	return render_template('createaccount.html')
+@app.route('/newaccount')
+def newaccount():
+	return render_template('createaccount.html')
 
 @app.route('/newaccount', methods=['POST'])
 def newaccount_post():
