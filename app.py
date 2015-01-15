@@ -75,13 +75,15 @@ def newaccount_post():
 	if request.method == 'POST':
 		user_name = request.form.getlist('username[]')
 		password = request.form.getlist('password[]')
-		if not user_name:
-			return render_template('createaccount.html', error="Cannot leave username blank")
-		if not password:
-			return render_template('createaccount.html', error="Please enter a password")
+		if user_name == "":
+			print "Error: Please enter a username"
+			return render_template('createaccount.html')
+		if password == "":
+			print "Error: Please enter a username"
+			return render_template('createaccount.html')
 		users = db.users
 		user_exists = users.find({'username': user_name})
-		if not user_exists:
+		if user_exists == NULL:
 			users.insert({'username': user_name, 'password': password})
 		return redirect('/')
 	return render_template('createaccount.html')
