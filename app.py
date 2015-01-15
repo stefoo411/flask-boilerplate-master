@@ -54,10 +54,6 @@ def accountsettings():
 	users = db.users
 	return render_template('accountsettings.html', users=users)
 
-@app.route('/change')
-def change():
-	return redirect('/')
-
 @app.route('/post', methods=['GET','POST'])
 def post():
 	if request.method == 'POST':
@@ -70,9 +66,9 @@ def login():
 	users = users.find({})
 	return render_template('get.html',users=users)
 
-@app.route('/newaccount')
-def newaccount():
-	return render_template('createaccount.html')
+#@app.route('/newaccount')
+#def newaccount():
+#	return render_template('createaccount.html')
 
 @app.route('/newaccount', methods=['POST'])
 def newaccount_post():
