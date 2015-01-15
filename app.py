@@ -78,7 +78,7 @@ def newaccount():
 def newaccount_post():
 	user_name = request.form.getlist('username[]')
 	password = request.form.getlist('password[]')
-	if not username:
+	if not user_name:
 		return render_template('createaccount.html', error="Cannot leave username blank")
 	if not password:
 		return render_template('createaccount.html', error="Please enter a password")
