@@ -57,14 +57,14 @@ def accountsettings():
 #@app.route('/accountsettings', methods=['POST'])
 #def accountsettings_post():
 #	if request.method == 'POST':
-#		user_name = request.form.getlist('username[]')
-#		password = request.form.getlist('password[]')
+#		user_name = request.form.getlist('as_username[]')
+#		password = request.form.getlist('as_password[]')
 #		if user_name == "":
 #			print "Error: Please enter a username"
-#			return render_template('createaccount.html')
+#			return render_template('accountsettings.html')
 #		if password == "":
 #			print "Error: Please enter a username"
-#			return render_template('createaccount.html')
+#			return render_template('accountsettings.html')
 #		users = db.users
 #		user_exists = users.find({'username': user_name})
 #		if user_exists == NULL:
@@ -95,10 +95,8 @@ def newaccount_post():
 		password = request.form.getlist('password[]')
 		if user_name is None:
 			print "Error: Please enter a username"
-			return render_template('createaccount.html')
 		if password is None:
 			print "Error: Please enter a username"
-			return render_template('createaccount.html')
 		users = db.users
 		user_exists = users.find({'username': user_name})
 		if user_exists == None:
