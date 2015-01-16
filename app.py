@@ -54,6 +54,24 @@ def accountsettings():
 	users = db.users
 	return render_template('accountsettings.html', users=users)
 
+#@app.route('/accountsettings', methods=['POST'])
+#def accountsettings_post():
+#	if request.method == 'POST':
+#		user_name = request.form.add('username[]')
+#		password = request.form.add('password[]')
+#		if user_name == "":
+#			print "Error: Please enter a username"
+#			return render_template('createaccount.html')
+#		if password == "":
+#			print "Error: Please enter a username"
+#			return render_template('createaccount.html')
+#		users = db.users
+#		user_exists = users.find({'username': user_name})
+#		if user_exists == NULL:
+#			users.insert({'username': user_name, 'password': password})
+#		return redirect('/')
+#	return render_template('createaccount.html')
+
 @app.route('/post', methods=['GET','POST'])
 def post():
 	if request.method == 'POST':
