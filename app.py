@@ -12,7 +12,7 @@ users = db.users
 
 @app.route('/')
 def hello():
-	users.insert({'username':'paras2','password':'sucks'})
+	#users.insert({'username':'paras2','password':'sucks'})
 	return render_template('home.html')
 
 @app.route('/search')
@@ -95,11 +95,13 @@ def newaccount_post():
 		password = request.form.getlist('password[]')
 		if user_name is None:
 			print "Error: Please enter a username"
+			return render_template('createaccount.html')
 		if password is None:
 			print "Error: Please enter a username"
+			return render_template('createaccount.html')
 		users = db.users
 		user_exists = users.find({'username': user_name})
-		if user_exists == None:
+		if user_exists != None:
 			users.insert({'username': user_name, 'password': password})
 		return redirect('/')
 	return render_template('createaccount.html')
