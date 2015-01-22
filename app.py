@@ -93,10 +93,10 @@ def newaccount_post():
 	if request.method == 'POST':
 		user_name = request.form.getlist('username[]')
 		password = request.form.getlist('password[]')
-		if user_name == '':
+		if request.form.get('username[]', None) == "":
 			print "Error: Please enter a username"
 			return render_template('createaccount.html')
-		if password == '':
+		if request.form.get('password[]', None) == "":
 			print "Error: Please enter a password"
 			return render_template('createaccount.html')
 		users = db.users
