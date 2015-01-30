@@ -94,16 +94,17 @@ def newaccount_post():
 		user_name = request.form.getlist('username[]')
 		password = request.form.getlist('password[]')
 		if request.form.get('username[]', None) == "":
-			abort(401)
+			flash("Please enter a username.", category='error')
 			return render_template('createaccount.html')
-		if request.form.get('password[]', None) == "":
-			abort(401)
+		elif request.form.get('password[]', None) == "":
+			flash("Please enter a username.", category='error')
 			return render_template('createaccount.html')
-		users = db.users
-		user_exists = users.find({'username': user_name})
-		if user_exists != None:
-			users.insert({'username': user_name, 'password': password})
-		return redirect('/')
+		else:
+			users = db.users
+			user_exists = users.find({'username': user_name})
+			if user_exists != None:
+				users.insert({'username': user_name, 'password': password})
+			return redirect('/')
 	return render_template('createaccount.html')
 
 if __name__ == '__main__': #main method
