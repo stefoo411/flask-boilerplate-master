@@ -93,18 +93,17 @@ def newaccount_post():
 	if request.method == 'POST':
 		user_name = request.form.getlist('username[]')
 		password = request.form.getlist('password[]')
-		if request.form.get('username[]', None) == "":
+		if request.form.get('username[]', '[]') == "":
 			flash("Please enter a username.", category='error')
 			return render_template('createaccount.html')
-		elif request.form.get('password[]', None) == "":
+		elif request.form.get('password[]','[]') == "":
 			flash("Please enter a username.", category='error')
 			return render_template('createaccount.html')
-		else:
-			users = db.users
-			user_exists = users.find({'username': user_name})
-			if user_exists != None:
-				users.insert({'username': user_name, 'password': password})
-			return redirect('/')
+		users = db.users
+		user_exists = users.find({'username': user_name})
+		if user_exists != None:
+			users.insert({'username': user_name, 'password': password})
+		return redirect('/')
 	return render_template('createaccount.html')
 
 if __name__ == '__main__': #main method
