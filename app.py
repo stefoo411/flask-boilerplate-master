@@ -91,12 +91,12 @@ def newaccount():
 @app.route('/newaccount', methods=['POST'])
 def newaccount_post():
 	if request.method == 'POST':
-		user_name = request.form.getlist('username[]')
-		password = request.form.getlist('password[]')
-		if request.form.get('username[]') == '[]':
+		user_name = request.form.get('username')
+		password = request.form.get('password')
+		if request.form.get('username') == '[]':
 			flash("Please enter a username.", category='error')
 			return render_template('createaccount.html')
-		elif request.form.get('password[]') == '[]':
+		elif request.form.get('password') == '[]':
 			flash("Please enter a password.", category='error')
 			return render_template('createaccount.html')
 		users = db.users
