@@ -97,7 +97,7 @@ def newaccount_post():
 			flash("Please enter a username.", category='error')
 			return render_template('createaccount.html')
 		elif request.form.get('password[]') == '[]':
-			flash("Please enter a username.", category='error')
+			flash("Please enter a password.", category='error')
 			return render_template('createaccount.html')
 		users = db.users
 		user_exists = users.find({'username': user_name})
