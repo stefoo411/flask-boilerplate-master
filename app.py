@@ -85,7 +85,7 @@ def login():
 	user_name = request.form.get('username')
 	pass_word = request.form.get('password')
 	for user in users:
-		if user == user_name && pass_word == user.password:
+		if user == user_name & pass_word == user.password:
 			return render_template('home_login.html')
 		else:
 			raise Error('Please type the correct username and password.')
