@@ -78,11 +78,17 @@ def post():
 		return render_template('post.html')
 	return render_template('get.html')
 
-@app.route('/login', methods=['GET','POST'])
-def login():
-	users = db.users
-	users = users.find({})
-	return render_template('get.html', users=users)
+#@app.route('/login', methods=['GET','POST'])
+#def login():
+#	users = db.users
+#	users = users.find({})
+#	user_name = request.form.get('username')
+#	password = request.form.get('password')
+#	for user in users:
+#		
+#
+#		if user =
+#	return render_template('get.html', users=users)
 
 @app.route('/newaccount')
 def newaccount():
