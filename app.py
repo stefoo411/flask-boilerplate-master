@@ -13,7 +13,7 @@ users = db.users
 @app.route('/')
 def hello():
 	#users.insert({'username':'paras2','password':'sucks'})
-	return render_template('home.html')
+	return render_template('home_start.html')
 
 @app.route('/search')
 def search():
