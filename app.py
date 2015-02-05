@@ -99,10 +99,10 @@ def newaccount_post():
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		password = request.form.get('password')
-		if user_name.toString() == '':
+		if user_name == '':
 			flash("Please enter a username.", category='error')
 			return render_template('createaccount.html')
-		elif password.toString() == '':
+		elif password == '':
 			flash("Please enter a password.", category='error')
 			return render_template('createaccount.html')
 		users = db.users
