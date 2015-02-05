@@ -82,7 +82,7 @@ def post():
 def login():
 	users = db.users
 	users = users.find({})
-	return render_template('get.html',users=users)
+	return render_template('get.html', users=users)
 
 @app.route('/newaccount')
 def newaccount():
