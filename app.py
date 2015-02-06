@@ -91,8 +91,9 @@ def login_post():
 		pass_word = request.form.get('password')
 		for user in users:
 			if (user == user_name) & (pass_word == user.get('password')):
-				return render_template('home_login.html')
+				return render_template('surveystats.html')
 #		raise Error('Please type the correct username and password.')
+	print("Error.")
 	return render_template('login.html')
 #	return render_template('get.html', users=users)
 
