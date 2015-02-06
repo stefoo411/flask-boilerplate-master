@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
 <html>
 
 <head><style>
@@ -25,12 +35,3 @@ body {
       </form>
 </body>
 </html>
-
-<?PHP 
-  if (isset($_POST['Submit1'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    print ($username);
-    print ($password);
-  }
-?>
