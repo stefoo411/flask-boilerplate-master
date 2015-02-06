@@ -89,12 +89,11 @@ def login():
 @app.route('/login', methods=['POST'])
 def login_post():
 	users = db.users
-#	users = users.find({})
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
 		user_exists = users.find({'username': user_name, 'password': pass_word})
-		if user_exists != None:
+		if (user_exists.hasNext() == False):
 			return redirect('/home_login')
 #		for user in users:
 #			if (user == user_name) & (pass_word == user.get('password')):
