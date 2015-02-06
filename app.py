@@ -78,6 +78,10 @@ def post():
 		return render_template('post.html')
 	return render_template('get.html')
 
+@app.route('/home_login')
+def home_login():
+	return render_template('home_login.html')
+
 @app.route('/login')
 def login():
 	return render_template('login.html')
@@ -85,13 +89,16 @@ def login():
 @app.route('/login', methods=['POST'])
 def login_post():
 	users = db.users
-	users = users.find({})
+#	users = users.find({})
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
-		for user in users:
-			if (user == user_name) & (pass_word == user.get('password')):
-				return render_template('surveystats.html')
+		user_exists = users.find({'username': user_name, 'password': pass_word})
+		if user_exists != None:
+			return redirect('/home_login')
+#		for user in users:
+#			if (user == user_name) & (pass_word == user.get('password')):
+#				return render_template('surveystats.html')
 #		raise Error('Please type the correct username and password.')
 		return render_template('login.html')
 #	return render_template('get.html', users=users)
