@@ -84,13 +84,13 @@ def login():
 
 @app.route('/login', methods=['POST'])
 def login_post():
+	users = db.users
+	users = users.find({})
 	if request.method == 'POST':
-		users = db.users
-		users = users.find({})
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
 		for user in users:
-			if (user == user_name) & (pass_word == user.password):
+			if (user == user_name) & (pass_word == user.get('password')):
 				return render_template('home_login.html')
 #		raise Error('Please type the correct username and password.')
 	return render_template('login.html')
