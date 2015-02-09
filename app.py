@@ -93,7 +93,7 @@ def login_post():
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
 		user_exists = users.find({'username': user_name, 'password': pass_word})
-		if (user_exists == None):
+		if (user_exists != None):
 			return redirect('/home_login')
 #		for user in users:
 #			if (user == user_name) & (pass_word == user.get('password')):
@@ -123,6 +123,10 @@ def newaccount_post():
 			users.insert({'username': user_name, 'password': password})
 		return redirect('/')
 	return render_template('createaccount.html')
+
+@app.route('/createsurvey')
+def createsurvey():
+	return render_template('createsurvey.html')
 
 if __name__ == '__main__': #main method
 	port = int(os.environ.get('PORT', 8000)) #connects to local host, which is where we're currently running the website locally.

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h1 style = "color: #383838; font-size: 300%; font-family: Trebuchet MS", align = "center">Create a Survey</h1>
+  <form name ="form1" id = "1" method ="post" action ="">
+       Title: <input type = "text", name = "surveyname"><br></br>
+       Description: <input type = "text", description = "surveydescription"><br></br>
+       Number of Participants Desired: <input type = "text", limit="limitnumber"><br></br>
+       (You would need to pay: "limit number")
+       Question<br></br>
+       <INPUT TYPE = "submit" Name = "Submit" VALUE = "Submit">        
+  </form>
+ 
+</body>
+ 
+<head><style>
+
+body {
+	background-color: #BFE8BF;
+}
+
+</head></style>
+
+</html>
+
+<?PHP 
+  if (isset($_POST['Submit'])) {
+		$toprintout;
+		switch ($_POST['Submit']) {
+			$word = $_POST['surveyname'];
+			if (strlen($word) === 0) {
+				print("Error: Please enter a word!");
+				break;
+			}
+			print("$username printed");
+			break;	
+		}	
+	}
+	print("$username not printed bwahahah");
+
+?>
