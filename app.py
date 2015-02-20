@@ -120,11 +120,11 @@ def newaccount_post():
 		users = db.users
 		user_exists = users.find({'username': user_name})
 		if user_exists != None:
-			users.insert({'username': user_name, 'password': password})
-			return redirect('/')
-		else:
 			flash("That username already exists.", category='error')
 			return render_template('createaccount.html')
+		else:
+			users.insert({'username': user_name, 'password': password})
+			return redirect('/')
 	return render_template('createaccount.html')
 
 @app.route('/createsurvey')
