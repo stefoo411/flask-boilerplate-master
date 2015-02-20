@@ -121,6 +121,9 @@ def newaccount_post():
 		user_exists = users.find({'username': user_name})
 		if user_exists != None:
 			users.insert({'username': user_name, 'password': password})
+		else:
+			flash("That username already exists.", category='error')
+			return render_template('createaccount.html')
 		return redirect('/')
 	return render_template('createaccount.html')
 
