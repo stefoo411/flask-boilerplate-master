@@ -54,6 +54,10 @@ def accountsettings():
 	users = db.users
 	return render_template('accountsettings.html', users=users)
 
+@app.route('/formresponsecheck')
+def formload():
+	return render_template('formresponsecheck.html')
+	
 #@app.route('/accountsettings', methods=['POST'])
 #def accountsettings_post():
 #	if request.method == 'POST':
