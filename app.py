@@ -99,6 +99,8 @@ def login_post():
 		user_exists = users.find({'username': user_name, 'password': pass_word})
 		if (user_exists != None):
 			return redirect('/home_login')
+		else:
+			return redirect('/')
 #		for user in users:
 #			if (user == user_name) & (pass_word == user.get('password')):
 #				return render_template('surveystats.html')
