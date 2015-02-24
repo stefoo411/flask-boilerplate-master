@@ -96,10 +96,8 @@ def login_post():
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
-		user_exists = users.find({'username': user_name})
+		user_exists = users.find({"username": user_name, "password": pass_word})
 		if (user_exists != None):
-			checkpassword = user_exists.get(password)
-			if (pass_word == checkpassword):
 				return redirect('/home_login')
 		else:
 			return redirect('/')
