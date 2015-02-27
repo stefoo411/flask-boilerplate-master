@@ -98,7 +98,8 @@ def login_post():
 		pass_word = request.form.get('password')
 		user_exists = users.find({"username": user_name, "password": pass_word})
 		if (user_exists != None):
-				return redirect('/home_login')
+				flash(user_exists)
+				return render_template('login.html')
 		else:
 			return redirect('/')
 #		for user in users:

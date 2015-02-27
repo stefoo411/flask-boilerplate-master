@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -8,8 +10,11 @@
        Description: <input type = "text", description = "surveydescription"><br></br>
        Number of Participants Desired: <input type = "text", limit="limitnumber"><br></br>
        (You would need to pay: "limit number")<br></br>
-       <hr>
-       Question 1: <input type = "text"><br></br>
+       <hr></hr>
+       <label class="val" style="width:250px;color:red;">Please select one</label><br></br>
+       <input type = "radio" name = "questiontype" value = "mc">Multiple Choice<br></br>
+		<input type = "radio" name = "questiontype" value = "open">Open Ended<br></br>
+		<input type = "radio" name = "questiontype" value = "tf">True/False<br></br>
        <INPUT TYPE = "submit" Name = "Submit" VALUE = "Submit">        
   </form>
  
