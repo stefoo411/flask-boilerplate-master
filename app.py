@@ -97,16 +97,20 @@ def login_post():
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
 		user_exists = users.find({"username": user_name, "password": pass_word})
-		if (user_exists != None):
+#		if (user_exists != None):
 #				flash("user_exists" + user_exists + ".", category='error')
-				return render_template('login.html')
-		elif (user_exists == None):
-			return redirect('/')
-#		for user in users:
-#			if (user == user_name) & (pass_word == user.get('password')):
-#				return render_template('surveystats.html')
-#		raise Error('Please type the correct username and password.')
-#		return render_template('login.html')
+#				return render_template('home_login.html')
+#		elif (user_exists == None):
+#			return redirect('/')
+		for user in users:
+			if (user == user_name):
+				if (pass_word == user.get('password')):
+					return render_template('home_login.html')
+				elif (pass_word != user.get('password')):
+					flash('Please enter the correct username and password.', category='error')
+			elif (user != user_name):
+				flash('Username not found.', category='error')
+	return render_template('login.html')
 #	return render_template('get.html', users=users)
 
 @app.route('/newaccount')
