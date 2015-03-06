@@ -98,9 +98,9 @@ def login_post():
 		pass_word = request.form.get('password')
 		user_exists = users.find({"username": user_name, "password": pass_word})
 		if (user_exists != None):
-				flash(user_exists)
+#				flash("user_exists" + user_exists + ".", category='error')
 				return render_template('login.html')
-		else:
+		elif (user_exists == None):
 			return redirect('/')
 #		for user in users:
 #			if (user == user_name) & (pass_word == user.get('password')):
