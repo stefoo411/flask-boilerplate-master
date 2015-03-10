@@ -97,7 +97,7 @@ def login_post():
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
 		user_exists = users.find({"username": user_name, "password": pass_word})
-#		if (user_exists != None):
+#		if (user_exists is not None):
 #				flash("user_exists" + user_exists + ".", category='error')
 #				return render_template('home_login.html')
 #		elif (user_exists == None):
@@ -130,7 +130,7 @@ def newaccount_post():
 			return render_template('createaccount.html')
 		users = db.users
 		user_exists = users.find({'username': user_name})
-		if user_exists != None:
+		if (user_exists is not None):
 			flash("That username already exists.", category='error')
 			return render_template('createaccount.html')
 		else:
