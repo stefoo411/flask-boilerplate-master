@@ -104,9 +104,9 @@ def login_post():
 #			return redirect('/')
 		for user in users:
 			if (user == user_name):
-				if (pass_word == user.find('password')):
+				if (pass_word == user.find('password')): #find or get?
 					return render_template('home_login.html')
-				elif (pass_word != user.get('password')):
+				elif (pass_word != user.get('password')): #find or get?
 					flash('Please enter the correct username and password.', category='error')
 			elif (user != user_name):
 				flash('Username not found.', category='error')
