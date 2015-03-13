@@ -2,17 +2,6 @@ from flask import Flask, render_template, request, redirect, flash
 import jinja2 #jinja2 is a python based templating language, so we can render the html templates easily.
 import os
 from pymongo import *
-from wtforms import Form, BooleanField, TextField, PasswordField, validators
-
-class RegistrationForm(Form):
-    username = TextField('Username', [validators.Length(min=4, max=25)])
-    email = TextField('Email Address', [validators.Length(min=6, max=35)])
-    password = PasswordField('New Password', [
-        validators.Required(),
-        validators.EqualTo('confirm', message='Passwords must match')
-    ])
-    confirm = PasswordField('Repeat Password')
-    accept_tos = BooleanField('I accept the TOS', [validators.Required()])
 
 app = Flask(__name__) #creates an flask instances
 
@@ -103,8 +92,26 @@ def login():
 
 @app.route('/login', methods=['POST'])
 def login_post():
-	form = RegistrationForm(request.form)
-	return render_template('login.html', form=form)
+	users = db.users
+	if request.method == 'POST':
+		user_name = request.form.get('username')
+		pass_word = request.form.get('password')
+		user_exists = users.find({"username": user_name, "password": pass_word})
+#		if (user_exists is not None):
+#				flash("user_exists" + user_exists + ".", category='error')
+#				return render_template('home_login.html')
+#		elif (user_exists == None):
+#			return redirect('/')
+		for user in users:
+			if (user == user_name):
+				if (pass_word == user.find('password')): #find or get?
+					return render_template('home_login.html')
+				elif (pass_word != user.get('password')): #find or get?
+					flash('Please enter the correct username and password.', category='error')
+			elif (user != user_name):
+				flash('Username not found.', category='error')
+	return render_template('login.html')
+#	return render_template('get.html', users=users)
 
 @app.route('/newaccount')
 def newaccount():
