@@ -93,7 +93,7 @@ def login():
 @app.route('/login', methods=['POST'])
 def login_post():
 	users = db.users
-	flash("i dont like you",category='error')
+	flash('i dont like you',category='error')
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
