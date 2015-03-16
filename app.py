@@ -96,7 +96,7 @@ def login_post():
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
-		flash(user_name,,category='error')
+		flash(user_name,category='error')
 		#user_exists = users.find({"username": user_name, "password": pass_word})
 #		if (user_exists is not None):
 #				flash("user_exists" + user_exists + ".", category='error')
