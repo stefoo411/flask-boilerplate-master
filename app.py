@@ -129,9 +129,8 @@ def newaccount_post():
 		elif password == '':
 			flash("Please enter a password.", category='error')
 			return render_template('createaccount.html')
-		users = db.users
-		user_exists = users.findOne({'username': user_name})
-		if (user_exists is not None):
+		users = db.users.count({users: user_name})
+		if (user_exists == 1):
 			flash("That username already exists.", category='error')
 			return render_template('createaccount.html')
 		else:
