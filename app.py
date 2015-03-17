@@ -93,10 +93,10 @@ def login():
 @app.route('/login', methods=['POST'])
 def login_post():
 	users = db.users
-	flash('i dont like you',category='error')
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
+		flash('Test', category='error')
 		#user_exists = users.find({"username": user_name, "password": pass_word})
 #		if (user_exists is not None):
 #				flash("user_exists" + user_exists + ".", category='error')
