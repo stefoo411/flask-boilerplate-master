@@ -96,12 +96,14 @@ def login_post():
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
+
 		user_exists = users.find({"username": user_name, "password": pass_word}).count()
 		if (user_exists == 1):
 			flash("This user exists.")
 			return render_template('home_login.html')
 		else:
 			flash('Please enter a valid username and password.', category='error')
+
 	return render_template('login.html')
 #	return render_template('get.html', users=users)
 
