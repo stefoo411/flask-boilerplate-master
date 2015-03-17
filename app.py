@@ -103,7 +103,7 @@ def login_post():
 			return render_template('home_login.html')
 		else:
 			flash('Please enter a valid username and password.', category='error')
-
+			print("Please enter a valid username and password.")
 	return render_template('login.html')
 #	return render_template('get.html', users=users)
 
