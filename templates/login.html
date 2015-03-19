@@ -6,23 +6,32 @@ body {
     background-color: #BFE8BF;
 }
 
+a.header {
+    color: #383838;
+}
+
 </style></head>
 
 <script type="text/javascript">
-      function newUser() {
-           if (users.getUser('username': username) !== false) {
-                 users.insert('username': username, 'password': password);
-           }
-      }
+  function newUser() {
+    if (users.getUser('username': username) !== false) {
+      users.insert('username': username, 'password': password);
+    }
+  }
 </script>
 
 <body>
-      <h1 style = "color: #383838; font-size: 300%; font-family: Trebuchet MS", align = "center"> Login </h1>
-      <form name ="form1" id = "1" method ="post" action ="">
-        Username: <INPUT TYPE = "TEXT" Name ="username" id="username">
-        Password: <INPUT TYPE = "TEXT" Name ="password" id="password">
-        <INPUT TYPE = "submit" Name = "Submit1" VALUE = "Submit">
-      </form>
+  <center>
+  <h1 style = "font-size: 300%; font-family: Trebuchet MS">
+  <a class = "header"; href = "/">Survi</a>
+  </h1>
+  <h2 style = "color: #383838; font-family: Trebuchet MS">Login</h2>
+  </center>
+    <form name ="form1" id = "1" method ="post" action ="">
+      Username: <INPUT TYPE = "TEXT" Name ="username" id="username">
+      Password: <INPUT TYPE = "TEXT" Name ="password" id="password">
+      <INPUT TYPE = "submit" Name = "Submit1" VALUE = "Submit">
+    </form>
 </body>
 </html>
 
