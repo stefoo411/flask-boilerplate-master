@@ -96,7 +96,6 @@ def login_post():
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
-
 		user_exists = users.find({"username": user_name, "password": pass_word}).count()
 		if (user_exists == 1):
 			flash("This user exists.")
