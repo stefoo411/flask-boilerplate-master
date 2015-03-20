@@ -3,4 +3,19 @@
 <iframe src="https://docs.google.com/forms/d/1NYqCKcL73w12gjme2vRUe2Y0Ybac0hGeP1Rmzf3-0BM/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 </html>
 <?php
-	//formresponse.getID()
+	 // Open a form by ID and log the responses to each question.
+ var form = FormApp.openById('1234567890abcdefghijklmnopqrstuvwxyz');
+ var formResponses = form.getResponses();
+ for (var i = 0; i < formResponses.length; i++) {
+   var formResponse = formResponses[i];
+   var itemResponses = formResponse.getItemResponses();
+   for (var j = 0; j < itemResponses.length; j++) {
+     var itemResponse = itemResponses[j];
+     Logger.log('Response #%s to the question "%s" was "%s"',
+         (i + 1).toString(),
+         itemResponse.getItem().getTitle(),
+         itemResponse.getResponse());
+   }
+ }	
+
+?>
