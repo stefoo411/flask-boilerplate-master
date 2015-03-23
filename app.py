@@ -15,28 +15,30 @@ def hello():
 	#users.insert({'username':'paras2','password':'sucks'})
 	return render_template('home_start.html')
 
-@app.route('/accountsettings')
-def accountsettings():
+@app.route('/changepassword')
+def changepassword():
 	users = db.users
-	return render_template('accountsettings.html', users=users)
+	return render_template('changepassword.html', users=users)
 
-#@app.route('/accountsettings', methods=['POST'])
-#def accountsettings_post():
-#	if request.method == 'POST':
-#		user_name = request.form.getlist('username[]')
-#		password = request.form.getlist('password[]')
-#		if user_name == "":
-#			print "Error: Please enter a username"
-#			return render_template('accountsettings.html')
-#		if password == "":
-#			print "Error: Please enter a password"
-#			return render_template('accountsettings.html')
-#		users = db.users
-#		user_exists = users.find({'username': user_name})
+@app.route('/changepassword', methods=['POST'])
+def changepassword_post():
+	if request.method == 'POST':
+		user_name = request.form.get('username')
+		pass_word = request.form.get('password')
+		if user_name == '':
+			flash("Please enter a username.", category='error')
+			return render_template('accountsettings.html')
+		elif password == '':
+			flash("Please enter a password.", category='error')
+			return render_template('accountsettings.html')
+		users = db.users
+		user_exists = users.find({"username": user_name, "password": pass_word}).count()
+		if (user_exists == 1):
+			password = pass_word
 #		if user_exists == NULL:
 #			users.insert({'username': user_name, 'password': password})
-#		return redirect('/')
-#	return render_template('createaccount.html')
+		return redirect('/')
+	return render_template('changepassword.html')
 
 @app.route('/createsurvey')
 def createsurvey():
