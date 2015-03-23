@@ -26,14 +26,14 @@ def changepassword_post():
 		user_name = request.form.get('as_username')
 		pass_word = request.form.get('as_oldpassword')
 		newpassword = request.form.get('as_newpassword')
-		confirmpassword = request.form.get('as_confirmpassword)
+		confirmpassword = request.form.get('as_confirmpassword')
 		if user_name == '':
 			flash("Please enter a username.", category='error')
 			return render_template('changepassword.html')
 		elif pass_word == '':
 			flash("Please enter a password.", category='error')
 			return render_template('changepassword.html')
-		elif newpassword is Not confirmpassword:
+		elif newpassword is not confirmpassword:
 			flash("Please confirm password.", category='error')
 			return render_template('changepassword.html')
 		users = db.users
