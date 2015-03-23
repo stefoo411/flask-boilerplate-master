@@ -15,49 +15,11 @@ def hello():
 	#users.insert({'username':'paras2','password':'sucks'})
 	return render_template('home_start.html')
 
-@app.route('/search')
-def search():
-	users = db.users
-	return render_template('search.html', users=users)
-
-@app.route('/newsurveys')
-def newsurveys():
-	users = db.users
-	return render_template('newsurveys.html', users=users)
-
-@app.route('/endingsurveys')
-def endingsurveys():
-	users = db.users
-	return render_template('endingsurveys.html', users=users)
-
-@app.route('/monthlylottery')
-def monthlylottery():
-	users = db.users
-	return render_template('monthlylottery.html', users=users)
-
-@app.route('/edit')
-def edit():
-	users = db.users
-	return render_template('edit.html', users=users)
-
-@app.route('/history')
-def history():
-	users = db.users
-	return render_template('history.html', users=users)
-
-@app.route('/surveystats')
-def surveystats():
-	return render_template('surveystats.html')
-
 @app.route('/accountsettings')
 def accountsettings():
 	users = db.users
 	return render_template('accountsettings.html', users=users)
 
-@app.route('/formresponsecheck')
-def formload():
-	return render_template('formresponsecheck.html')
-	
 #@app.route('/accountsettings', methods=['POST'])
 #def accountsettings_post():
 #	if request.method == 'POST':
@@ -76,11 +38,28 @@ def formload():
 #		return redirect('/')
 #	return render_template('createaccount.html')
 
-@app.route('/post', methods=['GET','POST'])
-def post():
-	if request.method == 'POST':
-		return render_template('post.html')
-	return render_template('get.html')
+@app.route('/createsurvey')
+def createsurvey():
+	return render_template('createsurvey.html')
+
+@app.route('/edit')
+def edit():
+	users = db.users
+	return render_template('edit.html', users=users)
+
+@app.route('/endingsurveys')
+def endingsurveys():
+	users = db.users
+	return render_template('endingsurveys.html', users=users)
+
+@app.route('/formresponsecheck')
+def formload():
+	return render_template('formresponsecheck.html')
+
+@app.route('/history')
+def history():
+	users = db.users
+	return render_template('history.html', users=users)
 
 @app.route('/home_login')
 def home_login():
@@ -105,6 +84,11 @@ def login_post():
 			print("Please enter a valid username and password.")
 	return render_template('login.html')
 #	return render_template('get.html', users=users)
+
+@app.route('/monthlylottery')
+def monthlylottery():
+	users = db.users
+	return render_template('monthlylottery.html', users=users)
 
 @app.route('/newaccount')
 def newaccount():
@@ -131,9 +115,25 @@ def newaccount_post():
 			return redirect('/')
 	return render_template('createaccount.html')
 
-@app.route('/createsurvey')
-def createsurvey():
-	return render_template('createsurvey.html')
+@app.route('/newsurveys')
+def newsurveys():
+	users = db.users
+	return render_template('newsurveys.html', users=users)
+
+@app.route('/post', methods=['GET','POST'])
+def post():
+	if request.method == 'POST':
+		return render_template('post.html')
+	return render_template('get.html')
+
+@app.route('/search')
+def search():
+	users = db.users
+	return render_template('search.html', users=users)
+
+@app.route('/surveystats')
+def surveystats():
+	return render_template('surveystats.html')
 
 if __name__ == '__main__': #main method
 	port = int(os.environ.get('PORT', 8000)) #connects to local host, which is where we're currently running the website locally.
