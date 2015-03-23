@@ -27,10 +27,10 @@ def changepassword_post():
 		pass_word = request.form.get('password')
 		if user_name == '':
 			flash("Please enter a username.", category='error')
-			return render_template('accountsettings.html')
+			return render_template('changepassword.html')
 		elif pass_word == '':
 			flash("Please enter a password.", category='error')
-			return render_template('accountsettings.html')
+			return render_template('changepassword.html')
 		users = db.users
 		user_exists = users.find({"username": user_name, "password": pass_word}).count()
 		if (user_exists == 1):
