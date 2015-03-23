@@ -23,20 +23,23 @@ def changepassword():
 @app.route('/changepassword', methods=['POST'])
 def changepassword_post():
 	if request.method == 'POST':
-		user_name = request.form.get('username')
-		pass_word = request.form.get('password')
+		user_name = request.form.get('as_username')
+		pass_word = request.form.get('as_oldpassword')
+		newpassword = request.form.get('as_newpassword')
+		confirmpassword = request.form.get('as_confirmpassword)
 		if user_name == '':
 			flash("Please enter a username.", category='error')
 			return render_template('changepassword.html')
 		elif pass_word == '':
 			flash("Please enter a password.", category='error')
 			return render_template('changepassword.html')
+		elif newpassword is Not confirmpassword:
+			flash("Please confirm password.", category='error')
+			return render_template('changepassword.html')
 		users = db.users
 		user_exists = users.find({"username": user_name, "password": pass_word}).count()
 		if (user_exists == 1):
-			password = pass_word
-#		if user_exists == NULL:
-#			users.insert({'username': user_name, 'password': password})
+			users.update({"username": user_name, "password": pass_word},{"username": user_name, "password": newpassword})
 		return redirect('/')
 	return render_template('changepassword.html')
 
