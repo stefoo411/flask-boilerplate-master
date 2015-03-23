@@ -28,7 +28,7 @@ def changepassword_post():
 		if user_name == '':
 			flash("Please enter a username.", category='error')
 			return render_template('accountsettings.html')
-		elif password == '':
+		elif pass_word == '':
 			flash("Please enter a password.", category='error')
 			return render_template('accountsettings.html')
 		users = db.users
