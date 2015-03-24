@@ -29,13 +29,13 @@ def changepassword_post():
 		confirmpassword = request.form.get('as_confirmpassword')
 		if user_name == '':
 			flash("Please enter a username.", category='error')
-#			return render_template('changepassword.html')
+			return render_template('changepassword.html')
 		elif pass_word == '':
 			flash("Please enter a password.", category='error')
-#			return render_template('changepassword.html')
+			return render_template('changepassword.html')
 		elif newpassword is not confirmpassword:
 			flash("Please confirm password.", category='error')
-#			return render_template('changepassword.html')
+			return render_template('changepassword.html')
 		users = db.users
 		user_exists = users.find({"username": user_name, "password": pass_word}).count()
 		if (user_exists == 1):
@@ -86,7 +86,7 @@ def login_post():
 			return render_template('home_login.html')
 		else:
 			flash('Please enter a valid username and password.', category='error')
-			print("Please enter a valid username and password.")
+#			print("Please enter a valid username and password.")
 	return render_template('login.html')
 #	return render_template('get.html', users=users)
 
