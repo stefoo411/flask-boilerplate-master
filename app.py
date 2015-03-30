@@ -104,11 +104,15 @@ def newaccount_post():
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		password = request.form.get('password')
+		email = request.form.get('email')
 		if user_name == '':
 			flash("Please enter a username.", category='error')
 			return render_template('createaccount.html')
 		elif password == '':
 			flash("Please enter a password.", category='error')
+			return render_template('createaccount.html')
+		elif email == '':
+			flash("Please enter an email.". category='error')
 			return render_template('createaccount.html')
 		users = db.users
 		user_exists = users.find({'username': user_name}).count()
@@ -116,8 +120,13 @@ def newaccount_post():
 			flash("That username already exists.", category='error')
 			return render_template('createaccount.html')
 		else:
-			users.insert({'username': user_name, 'password': password, 'email': email})
-			return redirect('/')
+			email_exists = users.find({'email': email}).count()
+			if (email_exists >= 1):
+				flash("This emai is already in use.", category='error')
+				return render_template('createaccount.html')
+			else:
+				users.insert({'username': user_name, 'password': password, 'email': email})
+				return redirect('/')
 	return render_template('createaccount.html')
 
 @app.route('/newsurveys')
