@@ -112,7 +112,7 @@ def newaccount_post():
 			flash("Please enter a password.", category='error')
 			return render_template('createaccount.html')
 		elif email == '':
-			flash("Please enter an email.". category='error')
+			flash("Please enter an email.", category='error')
 			return render_template('createaccount.html')
 		users = db.users
 		user_exists = users.find({'username': user_name}).count()
@@ -122,7 +122,7 @@ def newaccount_post():
 		else:
 			email_exists = users.find({'email': email}).count()
 			if (email_exists >= 1):
-				flash("This emai is already in use.", category='error')
+				flash("This email is already in use.", category='error')
 				return render_template('createaccount.html')
 			else:
 				users.insert({'username': user_name, 'password': password, 'email': email})
