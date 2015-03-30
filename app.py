@@ -116,7 +116,7 @@ def newaccount_post():
 			flash("That username already exists.", category='error')
 			return render_template('createaccount.html')
 		else:
-			users.insert({'username': user_name, 'password': password})
+			users.insert({'username': user_name, 'password': password, 'email': email})
 			return redirect('/')
 	return render_template('createaccount.html')
 
