@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, session
 from flask_mail import Mail, Message
 import jinja2 #jinja2 is a python based templating language, so we can render the html templates easily.
 import os
@@ -82,6 +82,7 @@ def login_post():
 	if request.method == 'POST':
 		user_name = request.form.get('username')
 		pass_word = request.form.get('password')
+		session['username'] = request.form['username']
 		user_exists = users.find({"username": user_name, "password": pass_word}).count()
 		if (user_exists == 1):
 			flash("This user exists.")
@@ -91,6 +92,10 @@ def login_post():
 #			print("Please enter a valid username and password.")
 	return render_template('login.html')
 #	return render_template('get.html', users=users)
+
+@app.route('/logout')
+def logout():
+	return render_template('logout.html')
 
 @app.route('/monthlylottery')
 def monthlylottery():
