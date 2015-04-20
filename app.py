@@ -95,7 +95,7 @@ def login_post():
 
 @app.route('/logout')
 def logout():
-	return render_template('logout.html')
+	return redirect("/")
 
 @app.route('/monthlylottery')
 def monthlylottery():
