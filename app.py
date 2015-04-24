@@ -72,6 +72,14 @@ def history():
 def home_login():
 	return render_template('home_login.html')
 
+@app.route("/index")
+def index():
+    msg = Message("Hello",
+    	sender="snowflower411@yahoo.com",
+    	recipients=["stefoo@bergen.org"])
+    msg.body = "Testing"
+    mail.send(msg)
+
 @app.route('/login')
 def login():
 	return render_template('login.html')
