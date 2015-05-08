@@ -1,3 +1,4 @@
+import requests
 from flask import Flask, render_template, request, redirect, flash, session
 from flask_mail import Mail, Message
 import jinja2 #jinja2 is a python based templating language, so we can render the html templates easily.
