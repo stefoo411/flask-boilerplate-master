@@ -1,12 +1,10 @@
 import requests
 from flask import Flask, render_template, request, redirect, flash, session
-from flask_mail import Mail, Message
 import jinja2 #jinja2 is a python based templating language, so we can render the html templates easily.
 import os
 from pymongo import *
 
 app = Flask(__name__) #creates an flask instances
-mail = Mail(app)
 
 app.secret_key = 'kbwkfwbhwbhk'
 client = MongoClient('mongodb://survistefoo:survi@ds051110.mongolab.com:51110/survi') #establishes connection to mongodb server
@@ -75,11 +73,11 @@ def home_login():
 
 @app.route("/index")
 def index():
-    msg = Message("Hello",
-    	sender="snowflower411@yahoo.com",
-    	recipients=["stefoo@bergen.org"])
-    msg.body = "Testing"
-    mail.send(msg)
+    #msg = Message("Hello",
+    #	sender="snowflower411@yahoo.com",
+    #	recipients=["stefoo@bergen.org"])
+    #msg.body = "Testing"
+    #mail.send(msg)
 
 @app.route('/login')
 def login():
