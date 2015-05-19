@@ -1,4 +1,4 @@
-import requests
+#import requests
 from flask import Flask, render_template, request, redirect, flash, session
 import jinja2 #jinja2 is a python based templating language, so we can render the html templates easily.
 import os
@@ -71,8 +71,8 @@ def history():
 def home_login():
 	return render_template('home_login.html')
 
-@app.route("/index")
-def index():
+#@app.route("/index")
+#def index():
     #msg = Message("Hello",
     #	sender="snowflower411@yahoo.com",
     #	recipients=["stefoo@bergen.org"])
