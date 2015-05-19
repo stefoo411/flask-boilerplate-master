@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request, redirect, flash, session
 import jinja2 #jinja2 is a python based templating language, so we can render the html templates easily.
 import os
-#from pymongo import *
+from pymongo import *
 
 app = Flask(__name__) #creates an flask instances
 
