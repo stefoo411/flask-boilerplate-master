@@ -13,6 +13,8 @@ app.secret_key = 'kbwkfwbhwbhk'
 client = MongoClient('mongodb://survistefoo:survi@ds051110.mongolab.com:51110/survi') #establishes connection to mongodb server
 db = client.get_default_database()  
 users = db.users
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 @app.route('/')
 def hello():
