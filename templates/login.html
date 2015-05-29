@@ -29,17 +29,8 @@ a.header {
   </center>
     <form name ="form1" id = "1" method ="post" action ="">
       Username: <INPUT TYPE = "TEXT" Name ="username" id="username">
-      Password: <INPUT TYPE = "TEXT" Name ="password" id="password">
+      Password: <INPUT TYPE = "password" Name ="password" id="password">
       <INPUT TYPE = "submit" Name = "Submit1" VALUE = "Submit">
     </form>
 </body>
 </html>
-
-<?PHP 
-  if (isset($_POST['Submit1'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    print ($username);
-    print ($password);
-  }
-?>
