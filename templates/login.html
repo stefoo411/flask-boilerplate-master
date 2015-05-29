@@ -12,13 +12,15 @@ a.header {
 
 </style></head>
 
-<script type="text/javascript">
-  function newUser() {
-    if (users.getUser('username': username) !== false) {
-      users.insert('username': username, 'password': password);
-    }
-  }
-</script>
+{% with msgs = get_flashed_messages() %}
+        {% if msgs %}
+          {%- for msg in msgs %}
+            <div class="alert alert-info">
+              {{ msg }}
+            </div>
+          {% endfor -%}
+        {% endif %}
+      {% endwith %}
 
 <body>
   <center>
