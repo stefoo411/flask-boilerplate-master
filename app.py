@@ -67,8 +67,12 @@ def createsurvey():
 def createsurvey_post():
 	if request.method == 'POST':
 		form_link = request.form.get('formlink')
+		form_title = request.form.get('formtitle')
 		if form_link == '':
 			flash("Please enter a link.", category='error')
+			return render_template('createsurvey.html')
+		if form_title == '':
+			flash("Please enter a title for the form.", category='error')
 			return render_template('createsurvey.html')
 		surveys = db.surveys
 		survey_exists = surveys.find({'formlink': form_link}).count()
@@ -76,7 +80,7 @@ def createsurvey_post():
 			flash("That survey already exists.", category='error')
 			return render_template('createsurvey.html')
 		else:
-			surveys.insert({'formlink': form_link})
+			surveys.insert({'formlink': form_link, 'formtitle': form_title})
 			return redirect('/')
 	return render_template('createsurvey.html')
 
@@ -87,7 +91,10 @@ def edit():
 
 @app.route('/endingsurveys')
 def endingsurveys():
-	users = db.users
+	surveys = db.surveys
+	allsurveys = surveys.find({})
+	for survey in surveys:
+		print(survey['formtitle'] + ": " + survey['formlink'])
 	return render_template('endingsurveys.html', users=users)
 
 @app.route('/endingsurveyslogin')
