@@ -92,9 +92,6 @@ def edit():
 @app.route('/endingsurveys')
 def endingsurveys():
 	surveys = db.surveys
-	allsurveys = surveys.find({})
-	for survey in surveys:
-		print(survey['formtitle'] + ": " + survey['formlink'])
 	return render_template('endingsurveys.html', users=users)
 
 @app.route('/endingsurveyslogin')
