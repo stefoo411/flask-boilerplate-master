@@ -67,6 +67,7 @@ def createsurvey():
 def createsurvey_post():
 	if request.method == 'POST':
 		form_link = request.form.get('formlink')
+		form_description = request.form.get('formdescription')
 		if form_link == '':
 			flash("Please enter a link.", category='error')
 			return render_template('createsurvey.html')
@@ -76,7 +77,7 @@ def createsurvey_post():
 			flash("That survey already exists.", category='error')
 			return render_template('createsurvey.html')
 		else:
-			surveys.insert({'formlink': form_link})
+			surveys.insert({'formlink': form_link, 'formdescription': form_description})
 			return redirect('/')
 	return render_template('createsurvey.html')
 
