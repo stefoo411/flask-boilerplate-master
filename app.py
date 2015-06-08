@@ -76,7 +76,7 @@ def createsurvey_post():
 			flash("That survey already exists.", category='error')
 			return render_template('createsurvey.html')
 		else:
-			users.insert({'formlink': form_link})
+			surveys.insert({'formlink': form_link})
 			return redirect('/')
 	return render_template('createsurvey.html')
 
