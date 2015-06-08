@@ -13,6 +13,7 @@ app.secret_key = 'kbwkfwbhwbhk'
 client = MongoClient('mongodb://survistefoo:survi@ds051110.mongolab.com:51110/survi') #establishes connection to mongodb server
 db = client.get_default_database()  
 users = db.users
+surveys = db.surveys
 #loggedin = 0;
 
 #login_manager = LoginManager()
@@ -60,6 +61,23 @@ def changepassword_post():
 
 @app.route('/createsurvey')
 def createsurvey():
+	return render_template('createsurvey.html')
+
+@app.route('/createsurvey', methods=['POST'])
+def createsurvey_post():
+	if request.method == 'POST':
+		form_link = request.form.get('formlink')
+		if form_link == '':
+			flash("Please enter a link.", category='error')
+			return render_template('createsurvey.html')
+		surveys = db.surveys
+		survey_exists = surveys.find({'formlink': form_link}).count()
+		if (survey_exists >= 1):
+			flash("That survey already exists.", category='error')
+			return render_template('createsurvey.html')
+		else:
+			users.insert({'formlink': form_link})
+			return redirect('/')
 	return render_template('createsurvey.html')
 
 @app.route('/edit')
