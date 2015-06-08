@@ -13,17 +13,24 @@ app.secret_key = 'kbwkfwbhwbhk'
 client = MongoClient('mongodb://survistefoo:survi@ds051110.mongolab.com:51110/survi') #establishes connection to mongodb server
 db = client.get_default_database()  
 users = db.users
+surveys = db.surveys
+#loggedin = 0;
+
 #login_manager = LoginManager()
 #login_manager.init_app(app)
 
 @app.route('/')
 def hello():
 	return render_template('home_start.html')
+#<<<<<<< HEAD
+#if (loggedin==0)
+#=======
 
 @app.route('/apstatisticsstefoo')
 def apstatisticsstefoo():
 	return render_template('apstatisticsstefoo.html')
 
+#>>>>>>> origin/master
 @app.route('/changepassword')
 def changepassword():
 	users = db.users
@@ -56,6 +63,27 @@ def changepassword_post():
 def createsurvey():
 	return render_template('createsurvey.html')
 
+@app.route('/createsurvey', methods=['POST'])
+def createsurvey_post():
+	if request.method == 'POST':
+		form_title = request.form.get('formtitle')
+		form_link = request.form.get('formlink')
+		if form_link == '':
+			flash("Please enter a link.", category='error')
+			return render_template('createsurvey.html')
+		if form_title == '':
+			flash("Please enter a title for the form.", category='error')
+			return render_template('createsurvey.html')
+		surveys = db.surveys
+		survey_exists = surveys.find({'formlink': form_link, 'formtitle': form_title}).count()
+		if (survey_exists >= 1):
+			flash("That survey already exists.", category='error')
+			return render_template('createsurvey.html')
+		else:
+			surveys.insert({'formlink': form_link, 'formtitle': form_title})
+			return redirect('/')
+	return render_template('createsurvey.html')
+
 @app.route('/edit')
 def edit():
 	users = db.users
@@ -63,7 +91,7 @@ def edit():
 
 @app.route('/endingsurveys')
 def endingsurveys():
-	users = db.users
+	surveys = db.surveys
 	return render_template('endingsurveys.html', users=users)
 
 @app.route('/endingsurveyslogin')
