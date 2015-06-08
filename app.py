@@ -20,6 +20,10 @@ users = db.users
 def hello():
 	return render_template('home_start.html')
 
+@app.route('/apstatisticsstefoo')
+def apstatisticsstefoo():
+	return render_template('apstatisticsstefoo.html')
+
 @app.route('/changepassword')
 def changepassword():
 	users = db.users
