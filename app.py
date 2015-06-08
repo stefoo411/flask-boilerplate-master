@@ -21,7 +21,15 @@ loggedin = 0;
 @app.route('/')
 def hello():
 	return render_template('home_start.html')
+<<<<<<< HEAD
 #if (loggedin==0)
+=======
+
+@app.route('/apstatisticsstefoo')
+def apstatisticsstefoo():
+	return render_template('apstatisticsstefoo.html')
+
+>>>>>>> origin/master
 @app.route('/changepassword')
 def changepassword():
 	users = db.users
@@ -63,6 +71,11 @@ def edit():
 def endingsurveys():
 	users = db.users
 	return render_template('endingsurveys.html', users=users)
+
+@app.route('/endingsurveyslogin')
+def endingsurveyslogin():
+	users = db.users
+	return render_template('endingsurveyslogin.html', users=users)
 
 @app.route('/formresponsecheck')
 def formload():
