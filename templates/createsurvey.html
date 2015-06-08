@@ -1,53 +1,118 @@
 <!DOCTYPE html>
 <html>
-<!--<<<<<<< HEAD
-	<head>
-		<script src="http://maps.googleapis.com/maps/api/js"></script>
-		<script>
-			function initialize() {
-  				var mapProp = {
-    				center:new google.maps.LatLng(51.508742,-0.120850),
-	    			zoom:5,
-    				mapTypeId:google.maps.MapTypeId.ROADMAP
-  				};
-  				var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-			}
-			google.maps.event.addDomListener(window, 'load', initialize);
-		</script>
-	</head>
-	<body>
-	<div id="googleMap" style="width:500px;height:380px;"></div>
-</body>
-=======
--->
 <body>
 
 <center>
 <h1 style = "font-size: 300%; font-family: Trebuchet MS">
 <a class = "header"; href = "/">Survi</a>
 </h1>
-<h2 style = "color: #383838; font-family: Trebuchet MS">Create a Survey</h2>
+<p style = "font-family: Trebuchet MS">Created by Stephanie Foo, HanSoo Lee, and Jiwon Lee</p>
 </center>
 
-<form name ="form1" id = "1" method ="post" action ="">
-    Title: <input type = "text", name = "surveyname", id = "surveyname"><br></br>
-    Description: <input type = "text", name="surveydescription", id = "surveydescription"><br></br>
-    Link to Google forms: <input type = "text", link ="googleformslink", id = "googleformslink"><br></br>
-    <INPUT TYPE = "submit" Name = "Submit" VALUE = "Submit">        
-  </form>
- 
-</body>
- 
-<head><style>
+<head>
+<style>
 
 body {
-	background-color: #BFE8BF;
+    background-color: #BFE8BF;
+}
+
+ul.mainmenu {
+    list-style-type: none;
+    margin: 200;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.sidemenu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    font-family: Trebuchet MS;
 }
 
 a.header {
     color: #383838;
 }
 
-</head></style>
+a#main {
+    display: block;
+    width: 150px;
+    color: #FFFFFF;
+}
 
+button {
+  background-color: #383838;
+  font-family: Trebuchet MS;
+  font-size: 100%;
+}
+
+table#t01 {
+    width = 100%;
+    margin: 0px auto;
+    padding: 0px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family: Trebuchet MS;
+}
+
+th, td {
+    padding: 15px;
+}
+
+th#surveytbh {
+    background-color: #383838;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+</style>
+</head>
+
+<!--<ul class = "mainmenu">
+    <li><button type = "button"><a href="search">Search</a></button></li>
+    <li><button type = "button"><a href="newsurveys">New Surveys</a></button></li>
+    <li><button type = "button"><a href="endingsurveys">Ending Surveys</a></button></li>
+    <li><button type = "button"><a href="monthlylottery">Monthly Lottery</a></button></li>
+</class></ul>
+-->
+
+<table align = "center">
+    <tbody>
+        <tr>
+            <!--<th colspan = "4"><button type = "button"><a href="search">Search</a></button></th>-->
+            <!--<th><button type = "button"><a href="newsurveys">New Surveys</a></button></th>-->
+            <th><button type = "button"><a href="endingsurveys">Surveys</a></button></th>
+            <!--<th><button type = "button"><a href="monthlylottery">Monthly Lottery</a></button></th>-->
+            <th><button type = "button"><a href ="createsurvey">Create</a></button></th>
+            <th><button type = "button"><a href = "history">History</a></button></th>
+            <th><button type = "button"><a href = "surveystats">Survey Stats</a></button></th>
+            <!--<tr>
+                <th><button type = "button"><a href="changepassword">Change Password</a></button></th>
+            </tr>-->
+            <th><button type = "button"><a href="logout">Logout</a></button></th>
+    </tbody>
+</table>
+
+<p>
+Steps to create survey for Survi:
+
+1. Create your survey on google forms
+2. Get add-on "Survi"
+3. You're done! Simple, right?
+
+</p>
+
+<!--
+<center>
+<h2 style = "font-family: Trebuchet MS"> Creators: </h2>
+<p style = "font-family: Trebuchet MS"> Stephanie Foo, HanSoo Lee, Jiwon Lee </p>
+</center>
+-->
+
+</body>
 </html>
