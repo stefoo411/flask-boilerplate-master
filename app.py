@@ -66,6 +66,11 @@ def endingsurveys():
 	users = db.users
 	return render_template('endingsurveys.html', users=users)
 
+@app.route('/endingsurveyslogin')
+def endingsurveys():
+	users = db.users
+	return render_template('endingsurveyslogin.html', users=users)
+
 @app.route('/formresponsecheck')
 def formload():
 	return render_template('formresponsecheck.html')
