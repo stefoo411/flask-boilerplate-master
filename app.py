@@ -23,7 +23,7 @@ def hello():
 	return render_template('home_start.html')
 <<<<<<< HEAD
 #if (loggedin==0)
-=======
+#=======
 
 @app.route('/apstatisticsstefoo')
 def apstatisticsstefoo():
