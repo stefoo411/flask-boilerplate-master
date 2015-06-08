@@ -67,7 +67,7 @@ def endingsurveys():
 	return render_template('endingsurveys.html', users=users)
 
 @app.route('/endingsurveyslogin')
-def endingsurveys():
+def endingsurveyslogin():
 	users = db.users
 	return render_template('endingsurveyslogin.html', users=users)
 
