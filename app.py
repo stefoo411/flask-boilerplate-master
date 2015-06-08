@@ -13,7 +13,7 @@ app.secret_key = 'kbwkfwbhwbhk'
 client = MongoClient('mongodb://survistefoo:survi@ds051110.mongolab.com:51110/survi') #establishes connection to mongodb server
 db = client.get_default_database()  
 users = db.users
-loggedin = 0;
+#loggedin = 0;
 
 #login_manager = LoginManager()
 #login_manager.init_app(app)
@@ -21,7 +21,7 @@ loggedin = 0;
 @app.route('/')
 def hello():
 	return render_template('home_start.html')
-<<<<<<< HEAD
+#<<<<<<< HEAD
 #if (loggedin==0)
 #=======
 
@@ -29,7 +29,7 @@ def hello():
 def apstatisticsstefoo():
 	return render_template('apstatisticsstefoo.html')
 
->>>>>>> origin/master
+#>>>>>>> origin/master
 @app.route('/changepassword')
 def changepassword():
 	users = db.users
