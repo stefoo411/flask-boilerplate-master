@@ -102,7 +102,32 @@ th#surveytbh {
 <p>
 Steps to create survey for Survi:<br>
 1. Create your survey on google forms<br>
-2. Get add-on "Survi"<br>
+2. Copy the following code to your script editor for your form:<br>
+function onOpen() {
+  var form = FormApp.getActiveForm();
+  var questions = form.getItems();
+  var questionexists = false;
+  for (var i = 0; i < questions.length; i++) {
+    if (questions[i].getType() == 'TEXT') {
+       if (questions[i].getTitle() == "Surviemail") {
+          questionexists = true;
+          break;
+       }
+    }
+  }
+  if (questionexists == false) {
+      var addedquestion = form.addTextItem();
+      addedquestion.setTitle("Surviemail");
+  }
+  var ssid = form.getDestinationId();
+  var ss = SpreadsheetApp.openById(ssid);
+  ScriptApp.newTrigger('onFormSubmit').forSpreadsheet(ss).onFormSubmit().create();
+}
+
+function onFormSubmit(e) {
+  var Surviemail = e.namedValues['Surviemail'][0];
+  var email = MailApp.sendEmail(Surviemail,"Completion","Surveys");
+}<br>
 3. Give link to your google form:<br>
 </p>
 <form name ="form1" id = "1" method ="post" action ="">
